@@ -28,8 +28,17 @@ gallerySmallImg.addEventListener('click', onOpenModal);
 function onOpenModal(evt) {
   evt.preventDefault();
 
-  const bigImg = evt.target.dataset.source;
-  const instance = basicLightbox.create(`<img src="${bigImg}"></img>`);
-
-  instance.show();
+  if (!evt.target.classList.contains('gallery__image')) {
+    return;
+  } else {
+    const bigImg = evt.target.dataset.source;
+    const instance = basicLightbox.create(`<img src="${bigImg}"></img>`, {
+      onShow: instance => {
+        window.addEventListener('keydown', evt => {
+          if (evt.code === 'Escape') instance.close();
+        });
+      },
+    });
+    instance.show();
+  }
 }

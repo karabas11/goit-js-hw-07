@@ -22,6 +22,7 @@ console.log(SimpleLightbox);
 
 new SimpleLightbox('.gallery__item a', {
   captionsData: 'alt',
+  captionPosition: 'bottom',
   captionDelay: 250,
   docClose: 'true',
 });
