@@ -38,6 +38,9 @@ function onOpenModal(evt) {
           if (evt.code === 'Escape') instance.close();
         });
       },
+      onClose: instance => {
+        window.removeEventListener('keydown', evt => instance.show());
+      },
     });
     instance.show();
   }
